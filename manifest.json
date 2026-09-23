@@ -1,0 +1,37 @@
+{
+    "name": "Осанка и пресс",
+    "short_name": "Осанка и пресс",
+    "description": "Программа Натальи Макаренко: ровная спина и плоский живот",
+    "start_url": "./index.html",
+    "id": "/osanka-press",
+    "display": "standalone",
+    "background_color": "#1d1433",
+    "theme_color": "#7a4bd1",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

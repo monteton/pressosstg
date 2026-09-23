@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#7a4bd1" />
+  <title>Осанка и пресс</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <script src="access-control.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <img src="images/main.jpg" alt="Наталья Макаренко">
+    </header>
+    <div class="hero-text">
+        <span class="eyebrow">Программа Натальи Макаренко</span>
+        <h1>Осанка<br>и пресс</h1>
+        <p>Ровная спина и плоский живот — дома, без инвентаря</p>
+    </div>
+
+    <button class="welcome-video" id="welcome-video-btn">
+      <div class="play-circle" data-icon="play"></div>
+      <div>
+        <strong>Приветственное видео</strong>
+        <span>Начните знакомство с программой отсюда</span>
+      </div>
+    </button>
+
+    <div class="row2">
+      <button class="chip-btn" id="welcome-text-btn">
+        <div class="chip-ico ico-violet" data-icon="heart"></div>
+        Приветствие
+      </button>
+      <button class="chip-btn" id="instruction-btn">
+        <div class="chip-ico ico-green" data-icon="info"></div>
+        Важно перед тренировками
+      </button>
+    </div>
+
+    <p class="section-title">Тренировки</p>
+
+    <a class="program-card" href="posture.html">
+      <span class="pc-tag tag-violet">7 тренировок</span>
+      <img class="pc-img" src="images/posture1.jpg" alt="">
+      <div class="pc-body">
+        <div class="pc-text">
+          <h3>Осанка</h3>
+          <p>Спина, плечи, шея · по 4 упражнения</p>
+          <div class="progress progress-violet"><i id="posture-progress" style="width:0"></i></div>
+        </div>
+        <div class="arrow arrow-violet" data-icon="arrow"></div>
+      </div>
+    </a>
+
+    <a class="program-card" href="press.html">
+      <span class="pc-tag tag-green">8 тренировок</span>
+      <img class="pc-img" src="images/press1.jpg" alt="">
+      <div class="pc-body">
+        <div class="pc-text">
+          <h3>Пресс</h3>
+          <p>Кор и талия · 20–25 минут</p>
+          <div class="progress progress-green"><i id="press-progress" style="width:0"></i></div>
+        </div>
+        <div class="arrow arrow-green" data-icon="arrow"></div>
+      </div>
+    </a>
+
+    <p class="section-title">Питание</p>
+
+    <a class="program-card" href="menu.html">
+      <img class="pc-img" src="images/menu.jpg" alt="">
+      <div class="pc-body">
+        <div class="pc-text">
+          <h3>Меню для плоского живота</h3>
+          <p>Рацион от нутрициолога · PDF</p>
+        </div>
+        <div class="arrow arrow-green" data-icon="arrow"></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Приветствие (текст) -->
+  <div class="modal" id="welcome-modal">
+    <div class="modal-sheet">
+      <button class="modal-close" data-close aria-label="Закрыть" data-icon="close"></button>
+      <h2>Добро пожаловать в вашу трансформацию!</h2>
+      <p>Хватит откладывать мечту о стройном, энергичном теле на потом — <strong>начни изменения прямо сейчас!</strong></p>
+      <p class="note-box">Программа создана <strong>Натальей Макаренко</strong> — тренером, который на собственном примере доказал: возраст — просто цифра, и результат возможен в любом возрасте.</p>
+      <p>Каждая тренировка — концентрат эффективных упражнений, проверенных сотнями женщин. Все видео-комплексы адаптированы — <strong>не нужно никакого зала, сверхинвентаря или опыта.</strong></p>
+      <p>В программе акцент на <strong>здоровую спину, красивую осанку и плоский живот</strong> — а вместе с ними приходят лёгкость и уверенность.</p>
+      <p class="lead">Начни сегодня — идеальный момент настал!</p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = ICONS[el.dataset.icon]);
+    renderTabbar('home');
+
+    const welcomeModal = document.getElementById('welcome-modal');
+    bindModal(welcomeModal);
+    document.getElementById('welcome-text-btn').onclick = () => openModal(welcomeModal);
+    document.getElementById('welcome-video-btn').onclick = () => openVideo(WELCOME_VIDEO, 'Приветственное видео');
+    document.getElementById('instruction-btn').onclick = () => openVideo(INSTRUCTION_VIDEO, 'Важно перед тренировками');
+
+    document.getElementById('posture-progress').style.width = (countDone('posture') / POSTURE.length * 100) + '%';
+    document.getElementById('press-progress').style.width = (countDone('press') / PRESS.length * 100) + '%';
+  </script>
+</body>
+</html>

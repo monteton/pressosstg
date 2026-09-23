@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#7a4bd1" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <script src="access-control.js"></script>
+  <title>Профиль</title>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>Мой прогресс</h1>
+    </header>
+
+    <div class="stats">
+      <div class="stat stat-violet"><b id="posture-count">0/7</b><span>тренировок осанки</span></div>
+      <div class="stat stat-green"><b id="press-count">0/8</b><span>тренировок пресса</span></div>
+    </div>
+
+    <section class="card">
+      <h2>Замеры</h2>
+      <p class="sub">Запишите замеры в начале и в конце программы — они сохранятся в приложении.</p>
+      <div class="measure-grid" id="measure-grid">
+        <span></span><span class="h">До</span><span class="h">После</span>
+      </div>
+      <button class="btn btn-violet" id="calc-btn">Посчитать результат</button>
+      <div id="results"></div>
+    </section>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    renderTabbar('profile');
+    document.getElementById('posture-count').textContent = `${countDone('posture')}/${POSTURE.length}`;
+    document.getElementById('press-count').textContent = `${countDone('press')}/${PRESS.length}`;
+
+    const FIELDS = [
+      { id: 'weight', label: 'Вес, кг', ph: ['65', '62'], unit: 'кг' },
+      { id: 'waist', label: 'Талия, см', ph: ['70', '65'], unit: 'см' },
+      { id: 'belly', label: 'Живот, см', ph: ['84', '78'], unit: 'см' },
+      { id: 'chest', label: 'Грудь, см', ph: ['90', '88'], unit: 'см' },
+      { id: 'hips', label: 'Бёдра, см', ph: ['98', '95'], unit: 'см' },
+    ];
+    const KEY = 'op-measures-v1';
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch {}
+
+    const grid = document.getElementById('measure-grid');
+    FIELDS.forEach(f => {
+      grid.insertAdjacentHTML('beforeend', `
+        <label for="before-${f.id}">${f.label}</label>
+        <input type="number" inputmode="decimal" id="before-${f.id}" placeholder="${f.ph[0]}" value="${saved['before-' + f.id] ?? ''}">
+        <input type="number" inputmode="decimal" id="after-${f.id}" placeholder="${f.ph[1]}" value="${saved['after-' + f.id] ?? ''}">`);
+    });
+    grid.addEventListener('input', e => {
+      saved[e.target.id] = e.target.value;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {}
+    });
+
+    function showResults() {
+      const rows = FIELDS.map(f => {
+        const b = parseFloat(document.getElementById('before-' + f.id).value);
+        const a = parseFloat(document.getElementById('after-' + f.id).value);
+        let val = '<span class="none">нет данных</span>';
+        if (!isNaN(a) && !isNaN(b)) {
+          const d = a - b;
+          val = d === 0
+            ? '<span class="none">без изменений</span>'
+            : `<span class="${d < 0 ? 'good' : 'bad'}">${d > 0 ? '+' : ''}${d.toFixed(1)} ${f.unit}</span>`;
+        }
+        return `<div class="result-row"><span>${f.label.split(',')[0]}</span>${val}</div>`;
+      }).join('');
+      document.getElementById('results').innerHTML =
+        `<div style="margin-top:16px">${rows}</div><p class="saved-note">Замеры сохранены на этом устройстве</p>`;
+    }
+    document.getElementById('calc-btn').onclick = showResults;
+    if (Object.values(saved).some(v => v)) showResults();
+  </script>
+</body>
+</html>
