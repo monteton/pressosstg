@@ -89,6 +89,7 @@ function countDone(type) {
 }
 
 // ---------- Service Worker ----------
-if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+// PWA пока отключено: снимаем service worker, если он остался от прошлых версий
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
 }
