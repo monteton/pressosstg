@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
-  <title>Меню для плоского живота</title>
+  <title>Меню 1300 калорий</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 </head>
 <body>
@@ -23,23 +23,18 @@
     <div class="menu-hero">
       <img src="images/menu.jpg" alt="">
       <div class="mh-text">
-        <h2>Меню для плоского живота</h2>
-        <p>Рацион, который работает вместе с тренировками</p>
+        <h2>Меню 1300 калорий</h2>
+        <p>Лучшая версия себя</p>
       </div>
     </div>
 
     <div class="card">
-      <p class="sub" style="margin-bottom:14px">Меню разработано специально для участниц программы совместно с профессиональным нутрициологом. Оно помогает быстрее убрать лишнее с живота и талии, поддерживает энергию и восстановление после тренировок.</p>
-      <ul class="tips">
-        <li><span data-icon="leaf"></span>Оптимальное соотношение белков, жиров и углеводов</li>
-        <li><span data-icon="leaf"></span>Натуральные продукты без сложных рецептов</li>
-        <li><span data-icon="leaf"></span>Сочетается с тренировками на пресс и осанку</li>
-      </ul>
+      <p class="sub">Меню на 1300 калорий в день. Используйте его вместе с тренировками на осанку и пресс.</p>
     </div>
 
     <button class="btn btn-green" id="open-pdf"><span data-icon="file"></span>Открыть меню</button>
     <div style="height:12px"></div>
-    <a class="btn btn-ghost" href="menu-ploskiy-zhivot.pdf" download>Скачать PDF</a>
+    <a class="btn btn-ghost" href="1300call.pdf" download>Скачать PDF</a>
   </div>
 
   <div class="modal pdf-modal" id="pdf-modal">
@@ -56,7 +51,7 @@
     document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = ICONS[el.dataset.icon]);
     renderTabbar('');
 
-    const PDF_URL = 'menu-ploskiy-zhivot.pdf';
+    const PDF_URL = '1300call.pdf';
     const modal = document.getElementById('pdf-modal');
     const pages = document.getElementById('pdf-pages');
     const loader = document.getElementById('pdf-loader');

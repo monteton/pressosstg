@@ -31,16 +31,10 @@
       </div>
     </button>
 
-    <div class="row2">
-      <button class="chip-btn" id="welcome-text-btn">
-        <div class="chip-ico ico-violet" data-icon="heart"></div>
-        Приветствие
-      </button>
-      <button class="chip-btn" id="instruction-btn">
-        <div class="chip-ico ico-green" data-icon="info"></div>
-        Важно перед тренировками
-      </button>
-    </div>
+    <button class="chip-btn chip-wide" id="welcome-text-btn">
+      <div class="chip-ico ico-violet" data-icon="heart"></div>
+      Приветствие
+    </button>
 
     <p class="section-title">Тренировки</p>
 
@@ -76,8 +70,8 @@
       <img class="pc-img" src="images/menu.jpg" alt="">
       <div class="pc-body">
         <div class="pc-text">
-          <h3>Меню для плоского живота</h3>
-          <p>Рацион от нутрициолога · PDF</p>
+          <h3>Меню 1300 калорий</h3>
+          <p>Рацион на каждый день · PDF</p>
         </div>
         <div class="arrow arrow-green" data-icon="arrow"></div>
       </div>
@@ -107,7 +101,6 @@
     bindModal(welcomeModal);
     document.getElementById('welcome-text-btn').onclick = () => openModal(welcomeModal);
     document.getElementById('welcome-video-btn').onclick = () => openVideo(WELCOME_VIDEO, 'Приветственное видео');
-    document.getElementById('instruction-btn').onclick = () => openVideo(INSTRUCTION_VIDEO, 'Важно перед тренировками');
 
     document.getElementById('posture-progress').style.width = (countDone('posture') / POSTURE.length * 100) + '%';
     document.getElementById('press-progress').style.width = (countDone('press') / PRESS.length * 100) + '%';

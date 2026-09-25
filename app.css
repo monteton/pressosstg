@@ -532,3 +532,6 @@ img, video { display: block; max-width: 100%; }
 /* Вступление в разделе «Осанка» */
 #intro .welcome-video { margin: 0 0 14px; }
 .w-num svg { width: 16px; height: 16px; margin-left: 2px; }
+
+/* Одна широкая кнопка «Приветствие» */
+.chip-wide { width: 100%; flex-direction: row; align-items: center; margin-top: 12px; }

@@ -2,7 +2,6 @@
 // Чтобы поменять видео или упражнения — правьте этот файл, страницы подтянут изменения сами.
 
 const WELCOME_VIDEO = 'https://file-storage.bothelp.io/myuppy/9e/9e34/9e34cf110dca59a06f1bbe1fe1068643/%D0%B2%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE.mp4';
-const INSTRUCTION_VIDEO = 'https://file-storage.bothelp.io/myuppy/75/7592/759279c47e0e4b1fac06622e87f7d4a2/%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F.mp4';
 
 // Вступление к разделу «Осанка» (смотрят один раз — открывается кнопкой)
 const POSTURE_WELCOME_VIDEO = 'https://file-storage.bothelp.io/myuppy/15/15e6/15e6efc3131fb6f025211aff129f074f/IMG_2512.mov';
