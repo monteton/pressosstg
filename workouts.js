@@ -21,6 +21,10 @@ const SECTIONS = {
   },
 };
 
+// Правило отдыха — показывается в каждой тренировке
+const REST_NOTE = `
+  <div class="rest-note">${ICONS.clock}<span><b>Отдых:</b> между подходами — 1 минута, между упражнениями — до 2 минут.</span></div>`;
+
 function workoutUrl(type, id) { return `workout.html?type=${type}&id=${id}`; }
 
 function renderList(type) {
@@ -79,6 +83,7 @@ function renderWorkout() {
         <h2>Тренировка ${w.id}</h2>
         <p class="sub">Сначала посмотрите вступление, затем делайте каждое упражнение так, как показано в видео.</p>
         <div class="meta-row"><span class="pill pill-violet">${ICONS.list}${w.videos.length} упражнения</span></div>
+        ${REST_NOTE}
       </div>`;
     if (w.intro) html += `
       <div class="card">
@@ -107,6 +112,7 @@ function renderWorkout() {
           <span class="pill pill-green">${ICONS.clock}${w.duration} мин</span>
           <span class="pill pill-violet">${ICONS.list}${w.exercises.length} упражнений</span>
         </div>
+        ${REST_NOTE}
         <div class="ex-list">
           ${w.exercises.map((ex, i) => `
             <div class="ex-item">
