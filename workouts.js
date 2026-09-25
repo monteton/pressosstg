@@ -117,7 +117,8 @@ function renderWorkout() {
           ${w.exercises.map((ex, i) => `
             <div class="ex-item">
               <div class="n">${String(i + 1).padStart(2, '0')}</div>
-              <div><b>${ex.name}</b><span>${ex.reps}</span></div>
+              <div class="ex-text"><b>${ex.name}</b><span>${ex.reps}</span></div>
+              ${EXERCISE_GUIDES[ex.name] ? `<button class="howto-btn" data-guide="${ex.name}">Как делать</button>` : ''}
             </div>`).join('')}
         </div>
       </div>`;
@@ -134,6 +135,8 @@ function renderWorkout() {
   document.getElementById('content').innerHTML = html;
 
   // Одновременно играет только одно видео
+  document.querySelectorAll('[data-guide]').forEach(b => b.onclick = () => openGuide(b.dataset.guide));
+
   const videos = document.querySelectorAll('video');
   videos.forEach(v => v.addEventListener('play', () => videos.forEach(o => { if (o !== v) o.pause(); })));
 
@@ -145,4 +148,31 @@ function renderWorkout() {
   };
   doneBtn.onclick = () => { setDone(type, w.id, !isDone(type, w.id)); paint(); };
   paint();
+}
+
+// Окно с техникой упражнения
+function openGuide(name) {
+  const g = EXERCISE_GUIDES[name];
+  if (!g) return;
+  let modal = document.getElementById('guide-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'guide-modal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-sheet guide">
+        <button class="modal-close" data-close aria-label="Закрыть">${ICONS.close}</button>
+        <div class="guide-body"></div>
+      </div>`;
+    document.body.appendChild(modal);
+    bindModal(modal);
+  }
+  modal.querySelector('.guide-body').innerHTML = `
+    <span class="guide-tag">Техника</span>
+    <h2>${name}</h2>
+    <p class="guide-intro">${g.intro}</p>
+    <h3>Как делать</h3>
+    <ol class="guide-steps">${g.steps.map(t => `<li>${t}</li>`).join('')}</ol>`;
+  modal.querySelector('.modal-sheet').scrollTop = 0;
+  openModal(modal);
 }

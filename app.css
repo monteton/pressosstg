@@ -550,3 +550,62 @@ img, video { display: block; max-width: 100%; }
 }
 .rest-note svg { width: 20px; height: 20px; flex: none; margin-top: 1px; }
 .rest-note b { font-weight: 800; }
+
+/* Кнопка «Как делать» и окно техники */
+.ex-item .ex-text { flex: 1; min-width: 0; }
+.howto-btn {
+  flex: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--violet-soft);
+  color: var(--violet-deep);
+  font-size: 13px;
+  font-weight: 800;
+}
+.howto-btn:active { transform: scale(.96); }
+
+.guide h2 { margin-bottom: 10px; font-size: 24px; }
+.guide h3 { margin: 18px 0 10px; font-size: 16px; font-weight: 800; }
+.guide-tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-deep);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.guide-intro {
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--violet-soft);
+  color: var(--ink) !important;
+  font-size: 15px;
+}
+.guide-steps { list-style: none; counter-reset: step; display: grid; gap: 10px; margin: 0; padding: 0; }
+.guide-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 12px 14px 12px 52px;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.guide-steps li b { color: var(--ink); }
+.guide-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 12px; top: 12px;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--grad-green);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+}
