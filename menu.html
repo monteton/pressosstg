@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
   <title>Питание</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 </head>
 <body>
   <div class="app">
@@ -20,7 +19,7 @@
       <h1>Питание</h1>
     </header>
 
-    <p class="sub" style="margin:0 2px 14px">Два меню, которые работают вместе с тренировками на осанку и пресс. Откройте прямо в приложении или скачайте PDF.</p>
+    <p class="sub" style="margin:0 2px 14px">Два меню, которые работают вместе с тренировками на осанку и пресс. Рецепты по дням с КБЖУ — прямо в приложении.</p>
 
     <article class="menu-card">
       <img class="menu-cover" src="images/cover-1300.jpg" alt="Обложка: Меню 1300 калорий">
@@ -37,23 +36,14 @@
     <article class="menu-card">
       <img class="menu-cover" src="images/cover-belly.jpg" alt="Обложка: Меню для плоского живота">
       <div class="menu-info">
-        <span class="menu-tag">18 страниц</span>
+        <span class="menu-tag">10 дней · 18 блюд</span>
         <h2>Меню для плоского живота</h2>
-        <p>Рацион от нутрициолога</p>
+        <p>Рецепты с фото и КБЖУ</p>
         <div class="menu-actions">
-          <button class="btn btn-green btn-sm" data-pdf="menu-ploskiy-zhivot.pdf">Открыть</button>
-          <a class="btn btn-ghost btn-sm" href="menu-ploskiy-zhivot.pdf" download>Скачать</a>
+          <a class="btn btn-green btn-sm menu-open-wide" href="menu-belly.html">Открыть меню</a>
         </div>
       </div>
     </article>
-  </div>
-
-  <div class="modal pdf-modal" id="pdf-modal">
-    <div class="pdf-wrap">
-      <button class="modal-close" data-close aria-label="Закрыть" data-icon="close"></button>
-      <div class="pdf-pages" id="pdf-pages"></div>
-      <div class="pdf-loader" id="pdf-loader"><div class="spinner"></div>Загрузка меню…</div>
-    </div>
   </div>
 
   <script src="data.js"></script>
@@ -62,51 +52,6 @@
     document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = ICONS[el.dataset.icon]);
     renderTabbar('');
 
-    let PDF_URL = '';
-    const modal = document.getElementById('pdf-modal');
-    const pages = document.getElementById('pdf-pages');
-    const loader = document.getElementById('pdf-loader');
-    let pdfDoc = null;
-    bindModal(modal);
-
-    // При закрытии освобождаем память
-    new MutationObserver(() => {
-      if (!modal.classList.contains('open') && pdfDoc) {
-        pages.innerHTML = '';
-        pdfDoc.destroy();
-        pdfDoc = null;
-      }
-    }).observe(modal, { attributes: true, attributeFilter: ['class'] });
-
-    document.querySelectorAll('[data-pdf]').forEach(b => b.onclick = () => openPdf(b.dataset.pdf));
-
-    async function openPdf(url) {
-      PDF_URL = url;
-      openModal(modal);
-      loader.style.display = 'flex';
-      loader.innerHTML = '<div class="spinner"></div>Загрузка меню…';
-      pages.innerHTML = '';
-      try {
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
-        pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
-        const ratio = Math.min(window.devicePixelRatio || 1, 2);
-        for (let n = 1; n <= pdfDoc.numPages; n++) {
-          if (!pdfDoc) return;
-          const page = await pdfDoc.getPage(n);
-          const base = page.getViewport({ scale: 1 });
-          const vp = page.getViewport({ scale: pages.clientWidth / base.width * ratio });
-          const canvas = document.createElement('canvas');
-          canvas.width = vp.width;
-          canvas.height = vp.height;
-          pages.appendChild(canvas);
-          await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
-          if (n === 1) loader.style.display = 'none';
-        }
-      } catch (err) {
-        console.error(err);
-        loader.innerHTML = 'Не удалось открыть меню.<br><a href="' + PDF_URL + '" style="text-decoration:underline">Открыть файл напрямую</a>';
-      }
-    }
   </script>
 </body>
 </html>
