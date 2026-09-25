@@ -660,3 +660,4 @@ img, video { display: block; max-width: 100%; }
 }
 .menu-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; padding-top: 12px; }
 .btn-sm { min-height: 42px; padding: 8px 10px; font-size: 14px; border-radius: 14px; }
+.menu-open-wide { grid-column: span 2; }
