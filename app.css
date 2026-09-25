@@ -586,7 +586,7 @@ img, video { display: block; max-width: 100%; }
   font-size: 15px;
 }
 .guide-steps { list-style: none; counter-reset: step; display: grid; gap: 10px; margin: 0; padding: 0; }
-.guide-steps li {
+.guide-steps > li {
   counter-increment: step;
   position: relative;
   padding: 12px 14px 12px 52px;
@@ -596,8 +596,8 @@ img, video { display: block; max-width: 100%; }
   font-size: 15px;
   line-height: 1.5;
 }
-.guide-steps li b { color: var(--ink); }
-.guide-steps li::before {
+.guide-steps > li b, .guide-sub b { color: var(--ink); }
+.guide-steps > li::before {
   content: counter(step);
   position: absolute;
   left: 12px; top: 12px;
@@ -608,4 +608,21 @@ img, video { display: block; max-width: 100%; }
   color: #fff;
   font-weight: 800;
   font-size: 14px;
+}
+
+/* Чек-лист внутри шага техники */
+.guide-sub { list-style: none; display: grid; gap: 6px; margin: 10px 0 0; padding: 0; }
+.guide-sub li {
+  position: relative;
+  padding: 8px 10px 8px 32px;
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 14px;
+}
+.guide-sub li::before {
+  content: '✓';
+  position: absolute;
+  left: 11px; top: 8px;
+  color: var(--green);
+  font-weight: 800;
 }
