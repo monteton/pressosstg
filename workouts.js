@@ -7,7 +7,7 @@ const SECTIONS = {
     items: POSTURE,
     color: 'violet',
     image: id => `images/posture${id}.jpg`,
-    meta: w => `${w.videos.length} видео-упражнения`,
+    meta: w => `Вступление + ${w.videos.length} упражнения`,
     intro: 'Делайте каждое упражнение так, как показано в видео. Двигайтесь по порядку — от тренировки 1 к 7.',
   },
   press: {
@@ -27,7 +27,15 @@ function renderList(type) {
   const s = SECTIONS[type];
   const done = countDone(type);
   document.getElementById('list-title').textContent = s.listTitle;
-  document.getElementById('intro').innerHTML = `
+  const welcome = type === 'posture' ? `
+    <button class="welcome-video" id="section-welcome-btn">
+      <div class="play-circle">${ICONS.play}</div>
+      <div>
+        <strong>Вступление к программе</strong>
+        <span>Посмотрите один раз перед первой тренировкой</span>
+      </div>
+    </button>` : '';
+  document.getElementById('intro').innerHTML = welcome + `
     <div class="intro-card intro-${s.color}">
       <h2>Выполнено ${done} из ${s.items.length}</h2>
       <p>${s.intro}</p>
@@ -47,6 +55,9 @@ function renderList(type) {
         <div class="arrow arrow-${s.color}">${ICONS.arrow}</div>
       </div>
     </a>`).join('');
+
+  const welcomeBtn = document.getElementById('section-welcome-btn');
+  if (welcomeBtn) welcomeBtn.onclick = () => openVideo(POSTURE_WELCOME_VIDEO, 'Вступление к программе «Осанка»');
 }
 
 function renderWorkout() {
@@ -66,8 +77,16 @@ function renderWorkout() {
     html += `
       <div class="card">
         <h2>Тренировка ${w.id}</h2>
-        <p class="sub">Делаем каждое упражнение как указано в описании.</p>
+        <p class="sub">Сначала посмотрите вступление, затем делайте каждое упражнение так, как показано в видео.</p>
         <div class="meta-row"><span class="pill pill-violet">${ICONS.list}${w.videos.length} упражнения</span></div>
+      </div>`;
+    if (w.intro) html += `
+      <div class="card">
+        <div class="ex-head">
+          <div class="w-num ${icoClass}">${ICONS.play}</div>
+          <h2>Вступление к тренировке</h2>
+        </div>
+        <div class="video-box"><video controls playsinline preload="metadata" src="${w.intro}#t=0.5"></video></div>
       </div>`;
     html += w.videos.map((src, i) => `
       <div class="card">

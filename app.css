@@ -528,3 +528,7 @@ img, video { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Вступление в разделе «Осанка» */
+#intro .welcome-video { margin: 0 0 14px; }
+.w-num svg { width: 16px; height: 16px; margin-left: 2px; }

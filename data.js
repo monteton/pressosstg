@@ -4,10 +4,14 @@
 const WELCOME_VIDEO = 'https://file-storage.bothelp.io/myuppy/9e/9e34/9e34cf110dca59a06f1bbe1fe1068643/%D0%B2%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE.mp4';
 const INSTRUCTION_VIDEO = 'https://file-storage.bothelp.io/myuppy/75/7592/759279c47e0e4b1fac06622e87f7d4a2/%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F.mp4';
 
-// Осанка: 7 тренировок по 4 видео-упражнения
+// Вступление к разделу «Осанка» (смотрят один раз — открывается кнопкой)
+const POSTURE_WELCOME_VIDEO = 'https://file-storage.bothelp.io/myuppy/15/15e6/15e6efc3131fb6f025211aff129f074f/IMG_2512.mov';
+
+// Осанка: 7 тренировок — вступление к тренировке + 4 видео-упражнения
 const POSTURE = [
   {
     "id": 1,
+    "intro": "https://file-storage.bothelp.io/myuppy/dc/dcb9/dcb9bd56c3c640848037d4ef245accc8/IMG_2505.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/30/300a/300ae9091ad5c72c62bb10088d7ef7e0/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2011.mp4",
       "https://file-storage.bothelp.io/myuppy/69/693d/693dabd67723a1fdbaf0c57fa943b33c/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2012.mp4",
@@ -17,6 +21,7 @@ const POSTURE = [
   },
   {
     "id": 2,
+    "intro": "https://file-storage.bothelp.io/myuppy/a4/a467/a467f7cbd22273cbb07f88418ebed22b/IMG_2506.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/47/4745/47458df4847b78c1b225834593fd9207/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2021.mp4",
       "https://file-storage.bothelp.io/myuppy/e4/e479/e479933bba2e995ca84405e3fd9653eb/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2022.mp4",
@@ -26,6 +31,7 @@ const POSTURE = [
   },
   {
     "id": 3,
+    "intro": "https://file-storage.bothelp.io/myuppy/01/0157/01571fb1216885ab1f2130e5f4018da8/IMG_2507.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/15/151d/151d1a5760c9423c3ee7d3959e2f4e22/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2031.mp4",
       "https://file-storage.bothelp.io/myuppy/39/3979/3979311aa583aaa3e9af1265eb3aaaa9/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2032.mp4",
@@ -35,6 +41,7 @@ const POSTURE = [
   },
   {
     "id": 4,
+    "intro": "https://file-storage.bothelp.io/myuppy/29/2983/2983381a7bffd97dd855ebd945854a55/IMG_2508.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/0b/0bb2/0bb249a29ac1fad91776c7fede6fafa2/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2041.mp4",
       "https://file-storage.bothelp.io/myuppy/34/347d/347d5bd6f930905465a933dc50e4c132/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2042.mp4",
@@ -44,6 +51,7 @@ const POSTURE = [
   },
   {
     "id": 5,
+    "intro": "https://file-storage.bothelp.io/myuppy/34/341d/341d6a157ff68911a932cbc47ea92fd8/IMG_2509.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/8e/8e55/8e558a17957aa3afa7772885050bf94c/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2051.mp4",
       "https://file-storage.bothelp.io/myuppy/4e/4e17/4e178cf929fb5e49ee61ac90095fd3b1/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2052.mp4",
@@ -53,6 +61,7 @@ const POSTURE = [
   },
   {
     "id": 6,
+    "intro": "https://file-storage.bothelp.io/myuppy/7c/7ce5/7ce5391bb5ca8940f91e3ff2a44bbd47/IMG_2510.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/b7/b792/b792f394248f91666a60e491885234ad/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2061.mp4",
       "https://file-storage.bothelp.io/myuppy/b9/b9bf/b9bfebf3f0cd37d6514d596d2db86b0f/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2062.mp4",
@@ -62,6 +71,7 @@ const POSTURE = [
   },
   {
     "id": 7,
+    "intro": "https://file-storage.bothelp.io/myuppy/fe/fe1b/fe1be60e58203d74086d5accd4ca8569/IMG_2511.mov",
     "videos": [
       "https://file-storage.bothelp.io/myuppy/08/08c9/08c9f89001e6a3a974832d08064b4f32/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2071.mp4",
       "https://file-storage.bothelp.io/myuppy/86/86f4/86f4ccaebb21380ce26f9de2ea771b14/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2072.mp4",
