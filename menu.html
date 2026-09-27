@@ -19,6 +19,14 @@
       <h1>Питание</h1>
     </header>
 
+    <button class="welcome-video" id="nutrition-video-btn" style="margin:0 0 16px">
+      <div class="play-circle" data-icon="play"></div>
+      <div>
+        <strong>Видео о питании</strong>
+        <span>Посмотрите перед тем, как открыть меню</span>
+      </div>
+    </button>
+
     <p class="sub" style="margin:0 2px 14px">Два меню, которые работают вместе с тренировками на осанку и пресс. Рецепты по дням с КБЖУ — прямо в приложении.</p>
 
     <article class="menu-card">
@@ -51,6 +59,9 @@
   <script>
     document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = ICONS[el.dataset.icon]);
     renderTabbar('');
+
+    const NUTRITION_VIDEO = 'https://file-storage.bothelp.io/myuppy/f5/f5d6/f5d6f18fe0df0187c561b25cfae4b1f9/IMG_2753.mov';
+    document.getElementById('nutrition-video-btn').onclick = () => openVideo(NUTRITION_VIDEO, 'Видео о питании');
 
   </script>
 </body>

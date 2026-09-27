@@ -6,6 +6,12 @@ const WELCOME_VIDEO = 'https://file-storage.bothelp.io/myuppy/9e/9e34/9e34cf110d
 // Вступление к разделу «Осанка» (смотрят один раз — открывается кнопкой)
 const POSTURE_WELCOME_VIDEO = 'https://file-storage.bothelp.io/myuppy/15/15e6/15e6efc3131fb6f025211aff129f074f/IMG_2512.mov';
 
+// Раздел «Пресс»: видео по технике — кнопки над списком тренировок
+const PRESS_TECHNIQUE_VIDEOS = [
+  { title: 'Техника выполнения упражнения «Вакуум»', src: 'https://file-storage.bothelp.io/myuppy/ff/ff92/ff9203dac867a73d44af26e3080114c1/IMG_2755.mov' },
+  { title: 'Техника выполнения упражнения «Планка»', src: 'https://file-storage.bothelp.io/myuppy/29/2987/2987b541c455029fca5fb447d3a0f3f7/IMG_2756.mov' },
+];
+
 // Осанка: 7 тренировок — вступление к тренировке + 4 видео-упражнения
 const POSTURE = [
   {

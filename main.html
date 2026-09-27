@@ -20,20 +20,15 @@
     <div class="hero-text">
         <span class="eyebrow">Программа Натальи Макаренко</span>
         <h1>Осанка<br>и пресс</h1>
-        <p>Ровная спина и плоский живот — дома, без инвентаря</p>
+        <p>Ровная спина и плоский живот — дома, с минимальным инвентарём</p>
     </div>
 
-    <button class="welcome-video" id="welcome-video-btn">
-      <div class="play-circle" data-icon="play"></div>
+    <button class="welcome-video" id="welcome-text-btn">
+      <div class="play-circle" data-icon="heart"></div>
       <div>
-        <strong>Приветственное видео</strong>
+        <strong>Приветствие</strong>
         <span>Начните знакомство с программой отсюда</span>
       </div>
-    </button>
-
-    <button class="chip-btn chip-wide" id="welcome-text-btn">
-      <div class="chip-ico ico-violet" data-icon="heart"></div>
-      Приветствие
     </button>
 
     <p class="section-title">Тренировки</p>
@@ -78,16 +73,18 @@
     </a>
   </div>
 
+
   <!-- Приветствие (текст) -->
   <div class="modal" id="welcome-modal">
     <div class="modal-sheet">
       <button class="modal-close" data-close aria-label="Закрыть" data-icon="close"></button>
-      <h2>Добро пожаловать в вашу трансформацию!</h2>
-      <p>Хватит откладывать мечту о стройном, энергичном теле на потом — <strong>начни изменения прямо сейчас!</strong></p>
-      <p class="note-box">Программа создана <strong>Натальей Макаренко</strong> — тренером, который на собственном примере доказал: возраст — просто цифра, и результат возможен в любом возрасте.</p>
-      <p>Каждая тренировка — концентрат эффективных упражнений, проверенных сотнями женщин. Все видео-комплексы адаптированы — <strong>не нужно никакого зала, сверхинвентаря или опыта.</strong></p>
-      <p>В программе акцент на <strong>здоровую спину, красивую осанку и плоский живот</strong> — а вместе с ними приходят лёгкость и уверенность.</p>
-      <p class="lead">Начни сегодня — идеальный момент настал!</p>
+      <h2>Добро пожаловать 🤍</h2>
+      <p>Если вы здесь - значит, где-то внутри уже созрело желание перестать откладывать заботу о себе на «понедельник».</p>
+      <p class="note-box">Меня зовут <strong>Наталья Макаренко</strong>. Я не буду обещать вам чудо за три дня (потому что волшебной кнопки не существует). Но я на собственном примере точно знаю, что возраст - это просто цифра, а результат возможен вне зависимости от того сколько нам лет.</p>
+      <p>В этих программах концентрат эффективных упражнений, которые я проверила на себе и на тысячах женщин до вас.</p>
+      <p>Ничего сложного: не нужен зал, дорогой инвентарь или спортивный опыт за плечами. Только вы, немного времени в день и ваше желание увидеть лучшую версию себя.</p>
+      <p>И помните, что идеальный момент всегда <strong>СЕГОДНЯ</strong>.</p>
+      <p class="lead">Так что добро пожаловать в свою трансформацию. Начнём?</p>
     </div>
   </div>
 
@@ -100,7 +97,7 @@
     const welcomeModal = document.getElementById('welcome-modal');
     bindModal(welcomeModal);
     document.getElementById('welcome-text-btn').onclick = () => openModal(welcomeModal);
-    document.getElementById('welcome-video-btn').onclick = () => openVideo(WELCOME_VIDEO, 'Приветственное видео');
+
 
     document.getElementById('posture-progress').style.width = (countDone('posture') / POSTURE.length * 100) + '%';
     document.getElementById('press-progress').style.width = (countDone('press') / PRESS.length * 100) + '%';

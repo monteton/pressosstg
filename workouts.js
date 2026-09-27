@@ -38,7 +38,14 @@ function renderList(type) {
         <strong>Вступление к программе</strong>
         <span>Посмотрите один раз перед первой тренировкой</span>
       </div>
-    </button>` : '';
+    </button>` : type === 'press' ? PRESS_TECHNIQUE_VIDEOS.map((v, i) => `
+    <button class="welcome-video" data-technique="${i}">
+      <div class="play-circle">${ICONS.play}</div>
+      <div>
+        <strong>${v.title}</strong>
+        <span>Посмотрите перед тренировками</span>
+      </div>
+    </button>`).join('') : '';
   document.getElementById('intro').innerHTML = welcome + `
     <div class="intro-card intro-${s.color}">
       <h2>Выполнено ${done} из ${s.items.length}</h2>
@@ -62,6 +69,10 @@ function renderList(type) {
 
   const welcomeBtn = document.getElementById('section-welcome-btn');
   if (welcomeBtn) welcomeBtn.onclick = () => openVideo(POSTURE_WELCOME_VIDEO, 'Вступление к программе «Осанка»');
+  document.querySelectorAll('[data-technique]').forEach(b => {
+    const v = PRESS_TECHNIQUE_VIDEOS[b.dataset.technique];
+    b.onclick = () => openVideo(v.src, v.title);
+  });
 }
 
 function renderWorkout() {
