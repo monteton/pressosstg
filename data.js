@@ -41,7 +41,7 @@ const POSTURE = [
       "https://file-storage.bothelp.io/myuppy/15/151d/151d1a5760c9423c3ee7d3959e2f4e22/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2031.mp4",
       "https://file-storage.bothelp.io/myuppy/39/3979/3979311aa583aaa3e9af1265eb3aaaa9/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2032.mp4",
       "https://file-storage.bothelp.io/myuppy/fe/fee8/fee88f771543697bb71a26e3c65e152e/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2033.mp4",
-      "https://file-storage.bothelp.io/myuppy/6c/6c5e/6c5e67b5747226f854f8194f3d0ff38c/%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D1%81%D0%B0%D0%BD%D0%BA%D1%83%2034.mp4"
+      "https://file-storage.bothelp.io/myuppy/9b/9be9/9be9964925c4a08b1c6fc25dad65348e/osanka%203%204.mov"
     ]
   },
   {
