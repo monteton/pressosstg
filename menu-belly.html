@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <title>Меню для плоского живота</title>
   <style>
     /* Меню для плоского живота — стили только этой страницы (тема из app.css) */
@@ -156,7 +157,7 @@
         <p class="section-title">Меню по дням</p>
         ${cards}
 
-        <a class="btn btn-ghost pdf-link" href="menu-ploskiy-zhivot.pdf" download>${DOWN} Скачать PDF-версию меню</a>`;
+        <a class="btn btn-ghost pdf-link" href="menu-ploskiy-zhivot.pdf" download data-download="Меню для плоского живота.pdf">${DOWN} Скачать PDF-версию меню</a>`;
     }
 
     // ---------- Вариант меню ----------

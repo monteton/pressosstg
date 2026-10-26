@@ -88,6 +88,42 @@ function countDone(type) {
   return Object.keys(getDone()).filter(k => k.startsWith(type + '-')).length;
 }
 
+// ---------- Скачивание файлов (PDF) ----------
+// Внутри Telegram и в установленном приложении обычная ссылка download не срабатывает
+// (на Android ничего не происходит, на iPhone PDF открывается без кнопки «назад»).
+// Поэтому способ скачивания выбираем по тому, где открыто приложение.
+function downloadFile(url, fileName) {
+  const abs = new URL(url, location.href).href;
+  const tg = window.Telegram && window.Telegram.WebApp;
+  if (tg && tg.initData) {
+    // Мини-приложение Telegram: родное окно загрузки (Telegram 8.0+), иначе — открыть во внешнем браузере
+    if (tg.isVersionAtLeast && tg.isVersionAtLeast('8.0') && tg.downloadFile) {
+      tg.downloadFile({ url: abs, file_name: fileName });
+    } else {
+      tg.openLink(abs);
+    }
+    return;
+  }
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const inAppBrowser = /Telegram|Instagram|FBAN|FBAV|VKAndroidApp|vk_app/i.test(navigator.userAgent);
+  if (standalone || inAppBrowser) {
+    window.open(abs, '_blank');
+    return;
+  }
+  const a = document.createElement('a');
+  a.href = abs;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+document.addEventListener('click', e => {
+  const link = e.target.closest('[data-download]');
+  if (!link) return;
+  e.preventDefault();
+  downloadFile(link.getAttribute('href'), link.dataset.download);
+});
+
 // ---------- Service Worker ----------
 // PWA пока отключено: снимаем service worker, если он остался от прошлых версий
 if ('serviceWorker' in navigator) {
